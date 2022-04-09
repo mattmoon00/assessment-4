@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Back End Assessment</title>
+  </head>
+  <body class="container">
+    <button id="complimentButton">Get a compliment</button>
+    <button id="fortuneButton">Get your fortune</button>
+    <button id="pokerHandButton">Get your Poker Hand</button>
+    <button id="restaurantButton">Where shoud I go for dinner?</button>
+    <label for="opponents">Choose BYU's Big XII Conference opponent</label>
+    <select id="opponents" onchange="alert(this.value)">
+      <option>Pick an opponent</option>
+      <option>Kansas</option>
+      <option>Oklahoma</option>
+      <option>Texas</option>
+      <option>TCU</option>
+      <option>Iowa State</option>
+      <option>Texas Tech</option>
+      <option>Oklahoma State</option>
+      <option>Baylor</option>
+      <option>Cincinnati</option>
+      <option>Central Florida</option>
+      <option>Houston</option>
+    </select>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      document.getElementById("complimentButton").onclick = function () {
+        axios
+          .get("http://localhost:4000/api/compliment/")
+          .then(function (response) {
+            const data = response.data;
+            alert(data);
+          });
+      };
+
+      document.getElementById("fortuneButton").onclick = function () {
+        axios
+          .get("http://localhost:4000/api/fortune/")
+          .then(function (response) {
+            const data = response.data;
+            alert(data);
+          });
+      };
+
+      document.getElementById("pokerHandButton").onclick = function () {
+        axios
+          .get("http://localhost:4000/api/pokerHand/")
+          .then(function (response) {
+            const data = response.data;
+            alert(data);
+          });
+      };
+
+      document.getElementById("opponents").onselect = function () {
+        axios
+          .get("http://localhost:4000/api/opponents/")
+          .then(function (response) {
+            const data = response.data;
+            alert(data);
+          });
+      };
+
+      document.getElementById("restaurantButton").onclick = function () {
+        axios
+          .get("http://localhost:4000/api/restaurant/")
+          .then(function (response) {
+            const data = response.data;
+            alert(data);
+          });
+      };
+    </script>
+  </body>
+</html>
